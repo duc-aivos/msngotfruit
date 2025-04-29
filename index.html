@@ -1,0 +1,368 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FruitMart - Thương mại trái cây trực tuyến</title>
+    <meta name="description" content="FruitMart - Thương mại điện tử bán trái cây tươi sạch, giao hàng tận nơi">
+    <meta name="keywords" content="trái cây, tươi ngon, thương mại điện tử, FruitMart">
+    <meta name="author" content="FruitMart">
+
+    <!-- Font Awesome if you need it
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+  -->
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <!--Replace with your tailwind.css once created-->
+    <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet">
+    <!--Tailwind Custom Forms - use to standardise form fields - https://github.com/tailwindcss/custom-forms-->
+
+    <style>
+      @import url("https://rsms.me/inter/inter.css");
+      html {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+      }
+
+      .gradient {
+        background-image: linear-gradient(-225deg, #cbbacc 0%, #2580b3 100%);
+      }
+
+      button,
+      .gradient2 {
+        background-color: #f39f86;
+        background-image: linear-gradient(315deg, #f39f86 0%, #f9d976 74%);
+      }
+
+      /* Browser mockup code
+ * Contribute: https://gist.github.com/jarthod/8719db9fef8deb937f4f
+ * Live example: https://updown.io
+ */
+      .browser-mockup {
+        border-top: 2em solid rgba(230, 230, 230, 0.7);
+        position: relative;
+        height: 60vh;
+      }
+
+      .browser-mockup > * {
+        display: block;
+      }
+
+      /* Custom image styles for the FruitMart website */
+      .hero-img {
+        max-width: 500px;
+        height: auto;
+      }
+      .product-img {
+        max-width: 300px;
+        height: auto;
+      }
+      .detail-img {
+        max-width: 400px;
+        height: auto;
+      }
+      .promo-img {
+        max-width: 600px;
+        height: auto;
+      }
+    </style>
+
+    <!-- N8n chat
+      <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+      <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+          webhookUrl: process.env.WEBHOOK_URL,
+          initialMessages: []
+        });
+      </script>  
+    -->
+  </head>
+
+  <body class="gradient leading-relaxed tracking-wide flex flex-col" contenteditable="true" data-new-gr-c-s-loaded="14.1233.0" spellcheck="false">
+    <!--Nav-->
+    <nav id="header" class="w-full z-30 top-0 text-white py-1 lg:py-6">
+      <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-2 lg:py-6">
+        <div class="pl-4 flex items-center">
+          <a class="text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+            <svg class="h-6 w-6 inline-block fill-current text-yellow-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M13 8V0L8.11 5.87 3 12h4v8L17 8h-4z"></path>
+            </svg>&nbsp;Ms.Ngot FruitMart
+          </a>
+        </div>
+
+        <div class="block lg:hidden pr-4">
+          <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-green-500 appearance-none focus:outline-none">
+            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <title>Menu</title>
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 text-black p-4 lg:p-0 z-20" id="nav-content">
+          <ul class="list-reset lg:flex justify-end flex-1 items-center">
+            <li class="mr-3">
+              <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="#">Trang Chủ</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Danh Mục</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Giỏ Hàng</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Liên Hệ</a>
+            </li>
+          </ul>
+          <button id="navAction" class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">
+            Thanh Toán
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container mx-auto min-h-screen">
+      <div class="text-center px-3 lg:px-0 mt-8">
+        <h1 class="my-4 text-2xl md:text-3xl lg:text-5xl font-black leading-tight">
+          FruitMart - Trái cây tươi trực tuyến
+        </h1>
+        <p class="leading-normal text-gray-800 text-base md:text-xl lg:text-2xl mb-8">
+          Trái cây sạch, tươi ngon được giao tận nơi. Mua sắm dễ dàng với chất lượng đảm bảo.
+        </p>
+
+        <button class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded my-2 md:my-6 py-4 px-8 shadow-lg w-48">
+          Mua Ngay
+        </button>
+        <a href="#" class="inline-block mx-auto lg:mx-0 hover:underline bg-transparent text-gray-600 font-extrabold my-2 md:my-6 py-2 lg:py-4 px-8">
+          Tìm hiểu thêm
+        </a>
+      </div>
+
+      <div class="flex items-center w-full mx-auto justify-center my-6">
+        <img src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHwxfHxGcnVpdHxlbnwwfHx8fDE3NDU5MDkyNzd8MA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080" alt="ripe pineapple fruit" class="browser-mockup hero-img rounded shadow-xl bg-white">
+      </div>
+    </div>
+
+    <!-- Featured Products Section -->
+    <section class="bg-white border-b py-12">
+      <div class="container mx-auto">
+        <h2 class="w-full my-2 text-4xl font-black leading-tight text-center text-gray-800">
+          Sản phẩm nổi bật
+        </h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+
+        <div class="flex flex-wrap justify-center">
+          <!-- Product Card 1 -->
+          <div class="w-full sm:w-1/3 p-4 flex flex-col items-center">
+            <img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHwyfHxGcnVpdHxlbnwwfHx8fDE3NDU5MDkyNzd8MA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080" alt="red strawberry fruit with white background" class="product-img rounded shadow">
+            <h3 class="text-2xl font-bold mt-4">Dâu Tây</h3>
+            <p class="text-gray-600">30,000 VNĐ/kg</p>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="w-full sm:w-1/3 p-4 flex flex-col items-center">
+            <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHwzfHxGcnVpdHxlbnwwfHx8fDE3NDU5MDkyNzd8MA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080" alt="red apple fruit beside green apple and yellow fruit on brown woven basket" class="product-img rounded shadow">
+            <h3 class="text-2xl font-bold mt-4">Táo</h3>
+            <p class="text-gray-600">25,000 VNĐ/kg</p>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div class="w-full sm:w-1/3 p-4 flex flex-col items-center">
+            <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHw1fHxGcnVpdHxlbnwwfHx8fDE3NDU5MDkyNzd8MA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080" alt="Banana 🍌" class="product-img rounded shadow">
+            <h3 class="text-2xl font-bold mt-4">Chuối</h3>
+            <p class="text-gray-600">20,000 VNĐ/kg</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Details Section -->
+    <section class="bg-gray-100 border-b py-8">
+      <div class="container max-w-5xl mx-auto m-8">
+        <h2 class="w-full my-2 text-4xl font-black leading-tight text-center text-gray-800">
+          Chi tiết sản phẩm
+        </h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+
+        <div class="flex flex-wrap items-center">
+          <div class="w-full sm:w-1/2 p-6">
+            <img src="https://images.unsplash.com/photo-1582979512210-99b6a53386f9?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHw3fHxGcnVpdHxlbnwwfHx8fDE3NDU5MDkyNzd8MA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080" alt="sliced orange fruit on white ceramic plate" class="detail-img rounded shadow">
+          </div>
+          <div class="w-full sm:w-1/2 p-6">
+            <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">Cam</h3>
+            <p class="text-gray-600 mb-8">
+              Cam tươi ngọt, giàu vitamin C, đảm bảo sức khỏe cho cả gia đình.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap flex-col-reverse sm:flex-row items-center">
+          <div class="w-full sm:w-1/2 p-6">
+            <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">Bưởi</h3>
+            <p class="text-gray-600 mb-8">
+              Bưởi thơm ngon, mọng nước, lý tưởng cho mùa hè và giải nhiệt.
+            </p>
+          </div>
+          <div class="w-full sm:w-1/2 p-6">
+            <img src="https://images.unsplash.com/photo-1577234286642-fc512a5f8f11?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHw4fHxGcnVpdHxlbnwwfHx8fDE3NDU5MDkyNzd8MA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080" alt="sliced grapefruits" class="detail-img rounded shadow">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promotional Offers Section -->
+    <section class="bg-white border-b py-8">
+      <div class="container mx-auto flex flex-wrap pt-4 pb-12">
+        <h2 class="w-full my-2 text-4xl font-black leading-tight text-center text-gray-800">
+          Chương trình khuyến mãi
+        </h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+
+        <div class="w-full md:w-1/2 p-6 flex flex-col items-center">
+          <img src="https://images.unsplash.com/photo-1584559582128-b8be739912e1?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w3MzQ0MzV8MHwxfHNlYXJjaHwxMHx8RnJ1aXR8ZW58MHx8fHwxNzQ1OTA5Mjc3fDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1080" alt="sliced fruits on white surface" class="promo-img rounded shadow mb-4">
+          <h3 class="text-3xl font-bold">Combo Trái Cây</h3>
+          <p class="text-gray-600 mb-8 text-center">
+            Giảm giá 10% cho đơn hàng trên 200,000 VNĐ. Ưu đãi có hạn, hãy đặt hàng ngay hôm nay!
+          </p>
+          <button class="mx-auto lg:mx-0 hover:underline gradient2 text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
+            Nhận Ưu Đãi
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="gradient w-full mx-auto text-center pt-6 pb-12">
+      <h2 class="w-full my-2 text-5xl font-black leading-tight text-center text-white">
+        Giao hàng nhanh chóng &amp; hỗ trợ 24/7
+      </h2>
+      <div class="w-full mb-4">
+        <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
+      </div>
+
+      <h3 class="my-4 text-3xl font-extrabold">
+        Liên hệ ngay với FruitMart để được tư vấn và đặt hàng!
+      </h3>
+
+      <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
+        Liên Hệ
+      </button>
+    </section>
+
+    <!--Footer-->
+    <footer class="bg-white">
+      <div class="container mx-auto mt-8 px-8">
+        <div class="w-full flex flex-col md:flex-row py-6">
+          <div class="flex-1 mb-6">
+            <a class="text-orange-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+              <svg class="h-6 w-6 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M13 8V0L8.11 5.87 3 12h4v8L17 8h-4z"></path>
+              </svg>
+              FruitMart
+            </a>
+          </div>
+          <div class="flex-1">
+            <p class="uppercase font-extrabold text-gray-500 md:mb-6">Liên kết</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="font-light no-underline text-gray-800 hover:text-orange-500">FAQ</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="font-light no-underline text-gray-800 hover:text-orange-500">Trợ giúp</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="font-light no-underline text-gray-800 hover:text-orange-500">Hỗ trợ</a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex-1">
+            <p class="uppercase font-extrabold text-gray-500 md:mb-6">Pháp lý</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="font-light no-underline text-gray-800 hover:text-orange-500">Điều khoản</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="font-light no-underline text-gray-800 hover:text-orange-500">Chính sách</a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex-1">
+            <p class="uppercase font-extrabold text-gray-500 md:mb-6">Xã hội</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="font-light no-underline text-gray-800 hover:text-orange-500">Facebook</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="font-light no-underline text-gray-800 hover:text-orange-500">Linkedin</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="font-light no-underline text-gray-800 hover:text-orange-500">Twitter</a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex-1">
+            <p class="uppercase font-extrabold text-gray-500 md:mb-6">Về chúng tôi</p>
+            <ul class="list-reset mb-6">
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="font-light no-underline text-gray-800 hover:text-orange-500">Blog chính thức</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="font-light no-underline text-gray-800 hover:text-orange-500">Giới thiệu</a>
+              </li>
+              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                <a href="#" class="font-light no-underline text-gray-800 hover:text-orange-500">Liên hệ</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /*Toggle dropdown list*/
+      /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+
+      var navMenuDiv = document.getElementById("nav-content");
+      var navMenu = document.getElementById("nav-toggle");
+
+      document.onclick = check;
+      function check(e) {
+        var target = (e && e.target) || (event && event.srcElement);
+
+        //Nav Menu
+        if (!checkParent(target, navMenuDiv)) {
+          // click NOT on the menu
+          if (checkParent(target, navMenu)) {
+            // click on the link
+            if (navMenuDiv.classList.contains("hidden")) {
+              navMenuDiv.classList.remove("hidden");
+            } else {
+              navMenuDiv.classList.add("hidden");
+            }
+          } else {
+            // click both outside link and outside menu, hide menu
+            navMenuDiv.classList.add("hidden");
+          }
+        }
+      }
+      function checkParent(t, elm) {
+        while (t.parentNode) {
+          if (t == elm) {
+            return true;
+          }
+          t = t.parentNode;
+        }
+        return false;
+      }
+    </script>
+  
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
